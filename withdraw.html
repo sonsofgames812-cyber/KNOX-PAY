@@ -1,0 +1,790 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e50914">
+  <meta name="description" content="RedPay withdrawal page">
+  <title>Withdraw — RedPay</title>  <link rel="stylesheet" href="style.css">
+</head><body>  <!-- TOP BAR -->  <header class="topbar"><div class="brand">
+  <div class="brand-logo">R</div>
+
+  <div>
+    <h2>RedPay</h2>
+    <span>Digital Payments</span>
+  </div>
+</div>
+
+<div class="nav-actions">
+
+  <a href="dashboard.html" class="profile-button">
+    ← Dashboard
+  </a>
+
+  <button id="logoutBtn" class="logout-button">
+    Logout
+  </button>
+
+</div>
+
+  </header>  <!-- MAIN -->  <main class="withdraw-container"><!-- PAGE HEADER -->
+<section class="dashboard-header">
+
+  <div>
+    <span class="eyebrow">REDPAY WALLET</span>
+
+    <h1>
+      Withdraw Funds 💸
+    </h1>
+
+    <p>
+      Enter the amount you want to withdraw.
+    </p>
+  </div>
+
+  <div class="status-badge">
+    <span class="status-dot"></span>
+    Account Active
+  </div>
+
+</section>
+
+
+<!-- BALANCE -->
+<section class="withdraw-balance-card">
+
+  <div>
+
+    <span>Available Balance</span>
+
+    <h2 id="availableBalance">
+      ₦0.00
+    </h2>
+
+  </div>
+
+  <div class="balance-icon">
+    ₦
+  </div>
+
+</section>
+
+
+<!-- WITHDRAW FORM -->
+<section class="withdraw-card">
+
+  <div class="card-heading">
+
+    <span>WITHDRAWAL REQUEST</span>
+
+    <h2>Withdrawal Details</h2>
+
+    <p>
+      Make sure your account information is correct
+      before submitting your request.
+    </p>
+
+  </div>
+
+
+  <form id="withdrawForm">
+
+    <!-- AMOUNT -->
+    <div class="form-group">
+
+      <label for="amount">
+        Withdrawal Amount
+      </label>
+
+      <div class="input-money">
+
+        <span>₦</span>
+
+        <input
+          type="number"
+          id="amount"
+          name="amount"
+          placeholder="0.00"
+          min="1"
+          step="0.01"
+          required
+        >
+
+      </div>
+
+      <small>
+        Available:
+        <strong id="availableSmall">
+          ₦0.00
+        </strong>
+      </small>
+
+    </div>
+
+
+    <!-- BANK NAME -->
+    <div class="form-group">
+
+      <label for="bank">
+        Bank Name
+      </label>
+
+      <select
+        id="bank"
+        name="bank"
+        required
+      >
+
+        <option value="">
+          Select your bank
+        </option>
+
+        <option value="Access Bank">
+          Access Bank
+        </option>
+
+        <option value="GTBank">
+          GTBank
+        </option>
+
+        <option value="First Bank">
+          First Bank
+        </option>
+
+        <option value="UBA">
+          UBA
+        </option>
+
+        <option value="Zenith Bank">
+          Zenith Bank
+        </option>
+
+        <option value="OPay">
+          OPay
+        </option>
+
+        <option value="PalmPay">
+          PalmPay
+        </option>
+
+        <option value="Kuda">
+          Kuda
+        </option>
+
+        <option value="Moniepoint">
+          Moniepoint
+        </option>
+
+        <option value="Other">
+          Other
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- ACCOUNT NUMBER -->
+    <div class="form-group">
+
+      <label for="accountNumber">
+        Account Number
+      </label>
+
+      <input
+        type="text"
+        id="accountNumber"
+        name="accountNumber"
+        placeholder="Enter 10-digit account number"
+        inputmode="numeric"
+        maxlength="10"
+        pattern="[0-9]{10}"
+        required
+      >
+
+      <small>
+        Enter a valid Nigerian bank account number.
+      </small>
+
+    </div>
+
+
+    <!-- ACCOUNT NAME -->
+    <div class="form-group">
+
+      <label for="accountName">
+        Account Name
+      </label>
+
+      <input
+        type="text"
+        id="accountName"
+        name="accountName"
+        placeholder="Enter account holder name"
+        maxlength="80"
+        required
+      >
+
+    </div>
+
+
+    <!-- DESCRIPTION -->
+    <div class="form-group">
+
+      <label for="description">
+        Description
+        <span>(Optional)</span>
+      </label>
+
+      <textarea
+        id="description"
+        name="description"
+        rows="3"
+        maxlength="150"
+        placeholder="What is this withdrawal for?"
+      ></textarea>
+
+    </div>
+
+
+    <!-- NOTICE -->
+    <div class="withdraw-notice">
+
+      <div class="notice-icon">
+        🔐
+      </div>
+
+      <div>
+
+        <h3>Before you continue</h3>
+
+        <p>
+          Check the withdrawal amount and bank details
+          carefully before submitting your request.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- SUBMIT -->
+    <button
+      type="submit"
+      id="withdrawBtn"
+      class="primary-btn withdraw-submit"
+    >
+      Request Withdrawal →
+    </button>
+
+  </form>
+
+</section>
+
+
+<!-- WITHDRAWAL INFO -->
+<section class="withdraw-info-grid">
+
+  <div class="info-card">
+
+    <div class="feature-icon">
+      💰
+    </div>
+
+    <h3>Minimum Withdrawal</h3>
+
+    <p>
+      The minimum withdrawal amount is ₦100.
+    </p>
+
+  </div>
+
+
+  <div class="info-card">
+
+    <div class="feature-icon">
+      🔒
+    </div>
+
+    <h3>Secure Request</h3>
+
+    <p>
+      Review your details carefully before submitting.
+    </p>
+
+  </div>
+
+
+  <div class="info-card">
+
+    <div class="feature-icon">
+      📊
+    </div>
+
+    <h3>Track Your Request</h3>
+
+    <p>
+      Submitted withdrawals appear in your transaction history.
+    </p>
+
+  </div>
+
+</section>
+
+  </main>  <!-- MOBILE NAV -->  <nav class="bottom-nav"><a
+  href="dashboard.html"
+  class="bottom-nav-item"
+>
+  <span>⌂</span>
+  <small>Home</small>
+</a>
+
+<a
+  href="withdraw.html"
+  class="bottom-nav-item active"
+>
+  <span>💸</span>
+  <small>Withdraw</small>
+</a>
+
+<a
+  href="history.html"
+  class="bottom-nav-item"
+>
+  <span>📊</span>
+  <small>History</small>
+</a>
+
+<a
+  href="profile.html"
+  class="bottom-nav-item"
+>
+  <span>👤</span>
+  <small>Profile</small>
+</a>
+
+  </nav>  <!-- JAVASCRIPT -->  <script src="app.js"></script>  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        /* GET CURRENT BALANCE */
+
+        let balance =
+          Number(
+            localStorage.getItem(
+              "redpayBalance"
+            )
+          ) || 0;
+
+
+        const balanceElement =
+          document.getElementById(
+            "availableBalance"
+          );
+
+        const smallBalanceElement =
+          document.getElementById(
+            "availableSmall"
+          );
+
+
+        updateBalanceDisplay();
+
+
+        function updateBalanceDisplay() {
+
+          const formatted =
+            formatMoney(balance);
+
+          if (balanceElement) {
+            balanceElement.textContent =
+              formatted;
+          }
+
+          if (smallBalanceElement) {
+            smallBalanceElement.textContent =
+              formatted;
+          }
+
+        }
+
+
+        /* FORM */
+
+        const form =
+          document.getElementById(
+            "withdrawForm"
+          );
+
+
+        const button =
+          document.getElementById(
+            "withdrawBtn"
+          );
+
+
+        form.addEventListener(
+          "submit",
+          function (event) {
+
+            event.preventDefault();
+
+
+            const amount =
+              Number(
+                document.getElementById(
+                  "amount"
+                ).value
+              );
+
+
+            const bank =
+              document.getElementById(
+                "bank"
+              ).value;
+
+
+            const accountNumber =
+              document.getElementById(
+                "accountNumber"
+              ).value.trim();
+
+
+            const accountName =
+              document.getElementById(
+                "accountName"
+              ).value.trim();
+
+
+            const description =
+              document.getElementById(
+                "description"
+              ).value.trim();
+
+
+            /* VALIDATION */
+
+            if (!amount || amount <= 0) {
+
+              showMessage(
+                "Please enter a valid withdrawal amount.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            if (amount < 100) {
+
+              showMessage(
+                "Minimum withdrawal amount is ₦100.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            if (amount > balance) {
+
+              showMessage(
+                "Insufficient wallet balance.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            if (!bank) {
+
+              showMessage(
+                "Please select your bank.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            if (!/^[0-9]{10}$/.test(accountNumber)) {
+
+              showMessage(
+                "Please enter a valid 10-digit account number.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            if (accountName.length < 2) {
+
+              showMessage(
+                "Please enter the account holder name.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            /* PREVENT DOUBLE SUBMISSION */
+
+            button.disabled = true;
+
+            button.textContent =
+              "Processing...";
+
+
+            /*
+             * DEMO WITHDRAWAL
+             *
+             * This stores the request locally.
+             * A real financial application should
+             * submit this to a secure backend.
+             */
+
+            setTimeout(
+              function () {
+
+                /* UPDATE BALANCE */
+
+                balance =
+                  balance - amount;
+
+
+                localStorage.setItem(
+                  "redpayBalance",
+                  balance.toString()
+                );
+
+
+                /* GET EXISTING TRANSACTIONS */
+
+                let transactions =
+                  JSON.parse(
+                    localStorage.getItem(
+                      "redpayTransactions"
+                    ) || "[]"
+                  );
+
+
+                /* CREATE TRANSACTION */
+
+                const transaction = {
+
+                  id:
+                    "WD" +
+                    Date.now(),
+
+                  type:
+                    "withdrawal",
+
+                  amount:
+                    amount,
+
+                  bank:
+                    bank,
+
+                  accountNumber:
+                    accountNumber,
+
+                  accountName:
+                    accountName,
+
+                  description:
+                    description ||
+                    "Wallet withdrawal",
+
+                  status:
+                    "pending",
+
+                  date:
+                    new Date().toLocaleString(
+                      "en-NG"
+                    )
+
+                };
+
+
+                transactions.push(
+                  transaction
+                );
+
+
+                localStorage.setItem(
+                  "redpayTransactions",
+                  JSON.stringify(
+                    transactions
+                  )
+                );
+
+
+                /* UPDATE DISPLAY */
+
+                updateBalanceDisplay();
+
+
+                /* SUCCESS */
+
+                showMessage(
+                  "Withdrawal request submitted successfully.",
+                  "success"
+                );
+
+
+                button.disabled = false;
+
+                button.textContent =
+                  "Request Withdrawal →";
+
+
+                /* RESET FORM */
+
+                form.reset();
+
+
+                /*
+                 * REDIRECT TO HISTORY AFTER
+                 * A SHORT DELAY.
+                 */
+
+                setTimeout(
+                  function () {
+
+                    window.location.href =
+                      "history.html";
+
+                  },
+                  1800
+                );
+
+              },
+              700
+            );
+
+          }
+        );
+
+
+        /* LOGOUT */
+
+        const logoutBtn =
+          document.getElementById(
+            "logoutBtn"
+          );
+
+
+        if (logoutBtn) {
+
+          logoutBtn.addEventListener(
+            "click",
+            function () {
+
+              localStorage.removeItem(
+                "redpayLoggedIn"
+              );
+
+              window.location.href =
+                "login.html";
+
+            }
+          );
+
+        }
+
+      }
+    );
+
+
+    /* MONEY FORMAT */
+
+    function formatMoney(amount) {
+
+      return "₦" +
+        Number(
+          amount || 0
+        ).toLocaleString(
+          "en-NG",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }
+        );
+
+    }
+
+
+    /* MESSAGE */
+
+    function showMessage(
+      message,
+      type
+    ) {
+
+      const existing =
+        document.getElementById(
+          "withdrawMessage"
+        );
+
+
+      if (existing) {
+        existing.remove();
+      }
+
+
+      const box =
+        document.createElement(
+          "div"
+        );
+
+
+      box.id =
+        "withdrawMessage";
+
+
+      box.className =
+        "withdraw-message " +
+        type;
+
+
+      box.textContent =
+        message;
+
+
+      const form =
+        document.getElementById(
+          "withdrawForm"
+        );
+
+
+      form.parentNode.insertBefore(
+        box,
+        form
+      );
+
+
+      setTimeout(
+        function () {
+
+          if (box) {
+            box.remove();
+          }
+
+        },
+        4500
+      );
+
+    }
+
+  </script></body>
+  </html>
