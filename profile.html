@@ -1,0 +1,1044 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e50914">
+  <meta name="description" content="RedPay user profile">
+  <title>My Profile — RedPay</title>  <link rel="stylesheet" href="style.css">
+</head><body>  <!-- TOP BAR -->  <header class="topbar"><div class="brand">
+
+  <div class="brand-logo">
+    R
+  </div>
+
+  <div>
+    <h2>RedPay</h2>
+    <span>Digital Payments</span>
+  </div>
+
+</div>
+
+
+<div class="nav-actions">
+
+  <a
+    href="dashboard.html"
+    class="profile-button"
+  >
+    ← Dashboard
+  </a>
+
+  <button
+    id="logoutBtn"
+    class="logout-button"
+    type="button"
+  >
+    Logout
+  </button>
+
+</div>
+
+  </header>  <!-- MAIN -->  <main class="profile-container"><!-- PAGE HEADER -->
+<section class="dashboard-header">
+
+  <div>
+
+    <span class="eyebrow">
+      REDPAY ACCOUNT
+    </span>
+
+    <h1>
+      My Profile 👤
+    </h1>
+
+    <p>
+      Manage your personal information and account details.
+    </p>
+
+  </div>
+
+
+  <div class="status-badge">
+
+    <span class="status-dot"></span>
+
+    Account Active
+
+  </div>
+
+</section>
+
+
+<!-- PROFILE HERO -->
+<section class="profile-hero">
+
+  <div class="profile-avatar" id="profileAvatar">
+    U
+  </div>
+
+  <div class="profile-hero-info">
+
+    <h2 id="displayName">
+      User
+    </h2>
+
+    <p id="displayEmail">
+      Not provided
+    </p>
+
+    <span class="verified-badge">
+      ✓ Verified Account
+    </span>
+
+  </div>
+
+</section>
+
+
+<!-- PROFILE FORM -->
+<section class="profile-card">
+
+  <div class="card-heading">
+
+    <span>PERSONAL INFORMATION</span>
+
+    <h2>
+      Account Details
+    </h2>
+
+    <p>
+      Keep your information up to date.
+    </p>
+
+  </div>
+
+
+  <form id="profileForm">
+
+    <!-- FULL NAME -->
+    <div class="form-group">
+
+      <label for="fullName">
+        Full Name
+      </label>
+
+      <input
+        type="text"
+        id="fullName"
+        name="fullName"
+        placeholder="Enter your full name"
+        maxlength="80"
+        autocomplete="name"
+        required
+      >
+
+    </div>
+
+
+    <!-- EMAIL -->
+    <div class="form-group">
+
+      <label for="email">
+        Email Address
+      </label>
+
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email"
+        maxlength="120"
+        autocomplete="email"
+        required
+      >
+
+    </div>
+
+
+    <!-- PHONE -->
+    <div class="form-group">
+
+      <label for="phone">
+        Phone Number
+      </label>
+
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="Enter your phone number"
+        maxlength="20"
+        autocomplete="tel"
+      >
+
+    </div>
+
+
+    <!-- ACCOUNT NUMBER -->
+    <div class="form-group">
+
+      <label for="accountNumber">
+        RedPay Account Number
+      </label>
+
+      <input
+        type="text"
+        id="accountNumber"
+        name="accountNumber"
+        placeholder="Account number"
+        maxlength="20"
+        readonly
+      >
+
+      <small>
+        Your RedPay account number cannot be changed here.
+      </small>
+
+    </div>
+
+
+    <!-- SAVE -->
+    <button
+      type="submit"
+      id="saveBtn"
+      class="primary-btn"
+    >
+      Save Changes →
+    </button>
+
+  </form>
+
+</section>
+
+
+<!-- ACCOUNT SUMMARY -->
+<section class="profile-card">
+
+  <div class="card-heading">
+
+    <span>ACCOUNT INFORMATION</span>
+
+    <h2>
+      Account Summary
+    </h2>
+
+  </div>
+
+
+  <div class="account-info-card">
+
+
+    <div class="info-row">
+
+      <div class="info-label">
+
+        <span class="info-icon">
+          🆔
+        </span>
+
+        <span>
+          Account Number
+        </span>
+
+      </div>
+
+      <strong id="summaryAccountNumber">
+        Not available
+      </strong>
+
+    </div>
+
+
+    <div class="info-row">
+
+      <div class="info-label">
+
+        <span class="info-icon">
+          💰
+        </span>
+
+        <span>
+          Wallet Balance
+        </span>
+
+      </div>
+
+      <strong id="summaryBalance">
+        ₦0.00
+      </strong>
+
+    </div>
+
+
+    <div class="info-row">
+
+      <div class="info-label">
+
+        <span class="info-icon">
+          📅
+        </span>
+
+        <span>
+          Account Created
+        </span>
+
+      </div>
+
+      <strong id="createdDate">
+        Not available
+      </strong>
+
+    </div>
+
+
+    <div class="info-row">
+
+      <div class="info-label">
+
+        <span class="info-icon">
+          🔐
+        </span>
+
+        <span>
+          Account Status
+        </span>
+
+      </div>
+
+      <strong class="verified">
+        ✓ Active
+      </strong>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- SECURITY -->
+<section class="security-card">
+
+  <div class="security-icon">
+    🔒
+  </div>
+
+  <div>
+
+    <h3>
+      Account Security
+    </h3>
+
+    <p>
+      Never share your password, PIN, OTP, or other
+      security information with anyone.
+    </p>
+
+  </div>
+
+  <button
+    type="button"
+    id="logoutSecurityBtn"
+    class="secondary-btn"
+  >
+    Logout
+  </button>
+
+</section>
+
+
+<!-- DANGER ZONE -->
+<section class="danger-card">
+
+  <div>
+
+    <span>
+      ACCOUNT
+    </span>
+
+    <h2>
+      Sign out of RedPay
+    </h2>
+
+    <p>
+      Sign out of this device when you're finished using RedPay.
+    </p>
+
+  </div>
+
+  <button
+    type="button"
+    id="logoutDangerBtn"
+    class="danger-btn"
+  >
+    Sign Out
+  </button>
+
+</section>
+
+  </main>  <!-- MOBILE NAV -->  <nav class="bottom-nav"><a
+  href="dashboard.html"
+  class="bottom-nav-item"
+>
+  <span>⌂</span>
+  <small>Home</small>
+</a>
+
+
+<a
+  href="withdraw.html"
+  class="bottom-nav-item"
+>
+  <span>💸</span>
+  <small>Withdraw</small>
+</a>
+
+
+<a
+  href="history.html"
+  class="bottom-nav-item"
+>
+  <span>📊</span>
+  <small>History</small>
+</a>
+
+
+<a
+  href="profile.html"
+  class="bottom-nav-item active"
+>
+  <span>👤</span>
+  <small>Profile</small>
+</a>
+
+  </nav>  <!-- JAVASCRIPT -->  <script src="app.js"></script>  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        /*
+         * LOAD USER
+         */
+
+        let user = {};
+
+
+        try {
+
+          user =
+            JSON.parse(
+              localStorage.getItem(
+                "redpayUser"
+              ) || "{}"
+            );
+
+        } catch (error) {
+
+          user = {};
+
+        }
+
+
+        /*
+         * ELEMENTS
+         */
+
+        const fullName =
+          document.getElementById(
+            "fullName"
+          );
+
+
+        const email =
+          document.getElementById(
+            "email"
+          );
+
+
+        const phone =
+          document.getElementById(
+            "phone"
+          );
+
+
+        const accountNumber =
+          document.getElementById(
+            "accountNumber"
+          );
+
+
+        const displayName =
+          document.getElementById(
+            "displayName"
+          );
+
+
+        const displayEmail =
+          document.getElementById(
+            "displayEmail"
+          );
+
+
+        const profileAvatar =
+          document.getElementById(
+            "profileAvatar"
+          );
+
+
+        /*
+         * USER VALUES
+         */
+
+        const name =
+          user.fullName ||
+          user.name ||
+          "User";
+
+
+        const userEmail =
+          user.email ||
+          "Not provided";
+
+
+        const userPhone =
+          user.phone ||
+          "";
+
+
+        const userAccountNumber =
+          user.accountNumber ||
+          generateAccountNumber();
+
+
+        /*
+         * FILL FORM
+         */
+
+        fullName.value =
+          name === "User"
+            ? ""
+            : name;
+
+
+        email.value =
+          user.email ||
+          "";
+
+
+        phone.value =
+          userPhone;
+
+
+        accountNumber.value =
+          userAccountNumber;
+
+
+        /*
+         * HEADER
+         */
+
+        displayName.textContent =
+          name;
+
+
+        displayEmail.textContent =
+          userEmail;
+
+
+        profileAvatar.textContent =
+          getInitials(name);
+
+
+        /*
+         * SUMMARY
+         */
+
+        document.getElementById(
+          "summaryAccountNumber"
+        ).textContent =
+          maskAccount(
+            userAccountNumber
+          );
+
+
+        const balance =
+          Number(
+            localStorage.getItem(
+              "redpayBalance"
+            )
+          ) || 0;
+
+
+        document.getElementById(
+          "summaryBalance"
+        ).textContent =
+          formatMoney(balance);
+
+
+        /*
+         * CREATED DATE
+         */
+
+        const createdDate =
+          user.createdAt ||
+          localStorage.getItem(
+            "redpayAccountCreated"
+          );
+
+
+        if (createdDate) {
+
+          document.getElementById(
+            "createdDate"
+          ).textContent =
+            formatDate(createdDate);
+
+        } else {
+
+          document.getElementById(
+            "createdDate"
+          ).textContent =
+            "Recently";
+
+        }
+
+
+        /*
+         * SAVE PROFILE
+         */
+
+        const form =
+          document.getElementById(
+            "profileForm"
+          );
+
+
+        const saveBtn =
+          document.getElementById(
+            "saveBtn"
+          );
+
+
+        form.addEventListener(
+          "submit",
+          function (event) {
+
+            event.preventDefault();
+
+
+            const newName =
+              fullName.value.trim();
+
+
+            const newEmail =
+              email.value.trim();
+
+
+            const newPhone =
+              phone.value.trim();
+
+
+            /*
+             * VALIDATION
+             */
+
+            if (
+              newName.length < 2
+            ) {
+
+              showMessage(
+                "Please enter your full name.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            if (
+              !isValidEmail(newEmail)
+            ) {
+
+              showMessage(
+                "Please enter a valid email address.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            /*
+             * BUTTON STATE
+             */
+
+            saveBtn.disabled =
+              true;
+
+
+            saveBtn.textContent =
+              "Saving...";
+
+
+            /*
+             * UPDATE USER
+             */
+
+            user.fullName =
+              newName;
+
+            user.name =
+              newName;
+
+            user.email =
+              newEmail;
+
+            user.phone =
+              newPhone;
+
+            user.accountNumber =
+              userAccountNumber;
+
+
+            if (!user.createdAt) {
+
+              user.createdAt =
+                new Date().toISOString();
+
+            }
+
+
+            /*
+             * SAVE
+             */
+
+            localStorage.setItem(
+              "redpayUser",
+              JSON.stringify(user)
+            );
+
+
+            localStorage.setItem(
+              "redpayAccountCreated",
+              user.createdAt
+            );
+
+
+            /*
+             * UPDATE UI
+             */
+
+            displayName.textContent =
+              newName;
+
+
+            displayEmail.textContent =
+              newEmail;
+
+
+            profileAvatar.textContent =
+              getInitials(newName);
+
+
+            saveBtn.disabled =
+              false;
+
+
+            saveBtn.textContent =
+              "Save Changes →";
+
+
+            showMessage(
+              "Profile updated successfully.",
+              "success"
+            );
+
+          }
+        );
+
+
+        /*
+         * LOGOUT BUTTONS
+         */
+
+        document
+          .getElementById("logoutBtn")
+          .addEventListener(
+            "click",
+            logout
+          );
+
+
+        document
+          .getElementById("logoutSecurityBtn")
+          .addEventListener(
+            "click",
+            logout
+          );
+
+
+        document
+          .getElementById("logoutDangerBtn")
+          .addEventListener(
+            "click",
+            logout
+          );
+
+
+        /*
+         * LOGOUT FUNCTION
+         */
+
+        function logout() {
+
+          localStorage.removeItem(
+            "redpayLoggedIn"
+          );
+
+
+          window.location.href =
+            "login.html";
+
+        }
+
+      }
+    );
+
+
+    /*
+     * GENERATE ACCOUNT NUMBER
+     */
+
+    function generateAccountNumber() {
+
+      const existing =
+        localStorage.getItem(
+          "redpayAccountNumber"
+        );
+
+
+      if (existing) {
+        return existing;
+      }
+
+
+      const number =
+        "20" +
+        Math.floor(
+          10000000 +
+          Math.random() * 89999999
+        );
+
+
+      localStorage.setItem(
+        "redpayAccountNumber",
+        number
+      );
+
+
+      return number;
+
+    }
+
+
+    /*
+     * GET INITIALS
+     */
+
+    function getInitials(
+      name
+    ) {
+
+      const words =
+        String(name)
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean);
+
+
+      if (words.length === 0) {
+        return "U";
+      }
+
+
+      if (words.length === 1) {
+
+        return words[0]
+          .substring(0, 2)
+          .toUpperCase();
+
+      }
+
+
+      return (
+        words[0][0] +
+        words[1][0]
+      ).toUpperCase();
+
+    }
+
+
+    /*
+     * MASK ACCOUNT
+     */
+
+    function maskAccount(
+      number
+    ) {
+
+      const value =
+        String(number || "");
+
+
+      if (value.length <= 4) {
+        return value;
+      }
+
+
+      return "••••" +
+        value.slice(-4);
+
+    }
+
+
+    /*
+     * FORMAT MONEY
+     */
+
+    function formatMoney(
+      amount
+    ) {
+
+      return "₦" +
+        Number(
+          amount || 0
+        ).toLocaleString(
+          "en-NG",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }
+        );
+
+    }
+
+
+    /*
+     * EMAIL VALIDATION
+     */
+
+    function isValidEmail(
+      email
+    ) {
+
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(email);
+
+    }
+
+
+    /*
+     * DATE FORMAT
+     */
+
+    function formatDate(
+      date
+    ) {
+
+      const parsed =
+        new Date(date);
+
+
+      if (
+        Number.isNaN(
+          parsed.getTime()
+        )
+      ) {
+
+        return "Recently";
+
+      }
+
+
+      return parsed.toLocaleDateString(
+        "en-NG",
+        {
+          day: "numeric",
+          month: "short",
+          year: "numeric"
+        }
+      );
+
+    }
+
+
+    /*
+     * MESSAGE
+     */
+
+    function showMessage(
+      message,
+      type
+    ) {
+
+      const old =
+        document.getElementById(
+          "profileMessage"
+        );
+
+
+      if (old) {
+        old.remove();
+      }
+
+
+      const messageBox =
+        document.createElement(
+          "div"
+        );
+
+
+      messageBox.id =
+        "profileMessage";
+
+
+      messageBox.className =
+        "withdraw-message " +
+        type;
+
+
+      messageBox.textContent =
+        message;
+
+
+      const main =
+        document.querySelector(
+          "main"
+        );
+
+
+      main.insertBefore(
+        messageBox,
+        main.firstChild
+      );
+
+
+      setTimeout(
+        function () {
+
+          if (messageBox) {
+            messageBox.remove();
+          }
+
+        },
+        4000
+      );
+
+    }
+
+  </script></body>
+  </html>
