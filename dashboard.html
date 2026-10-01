@@ -1,0 +1,664 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e50914">
+  <meta name="description" content="RedPay Dashboard">
+  <title>Dashboard — RedPay</title>  <link rel="stylesheet" href="style.css">
+</head><body>  <!-- TOP NAVIGATION -->  <header class="topbar"><div class="brand">
+  <div class="brand-logo">R</div>
+
+  <div>
+    <h2>RedPay</h2>
+    <span>Digital Payments</span>
+  </div>
+</div>
+
+<div class="nav-actions">
+
+  <a href="profile.html" class="profile-button">
+    👤 Profile
+  </a>
+
+  <button id="logoutBtn" class="logout-button">
+    Logout
+  </button>
+
+</div>
+
+  </header>  <!-- DASHBOARD -->  <main class="dashboard-container"><!-- WELCOME -->
+<section class="dashboard-header">
+
+  <div>
+    <span class="eyebrow">REDPAY DASHBOARD</span>
+
+    <h1>
+      Welcome back, <span id="userName">User</span> 👋
+    </h1>
+
+    <p>
+      Manage your wallet and transactions from one place.
+    </p>
+  </div>
+
+  <div class="status-badge">
+    <span class="status-dot"></span>
+    Account Active
+  </div>
+
+</section>
+
+
+<!-- BALANCE CARDS -->
+<section class="balance-grid">
+
+  <!-- MAIN BALANCE -->
+  <div class="balance-card primary-balance">
+
+    <div class="balance-card-top">
+      <span>Total Balance</span>
+      <span class="balance-icon">₦</span>
+    </div>
+
+    <h2 id="balance">
+      ₦0.00
+    </h2>
+
+    <p>
+      Available wallet balance
+    </p>
+
+    <div class="balance-card-bottom">
+      <span>RedPay Wallet</span>
+      <span id="accountNumber">••••••••</span>
+    </div>
+
+  </div>
+
+
+  <!-- TOTAL DEPOSITS -->
+  <div class="stat-card">
+
+    <div class="stat-icon">
+      💰
+    </div>
+
+    <div>
+      <span>Total Deposits</span>
+      <h3 id="totalDeposits">
+        ₦0.00
+      </h3>
+    </div>
+
+  </div>
+
+
+  <!-- TOTAL WITHDRAWALS -->
+  <div class="stat-card">
+
+    <div class="stat-icon">
+      💸
+    </div>
+
+    <div>
+      <span>Total Withdrawals</span>
+      <h3 id="totalWithdrawals">
+        ₦0.00
+      </h3>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- QUICK ACTIONS -->
+<section class="dashboard-section">
+
+  <div class="section-title">
+    <div>
+      <span>QUICK ACTIONS</span>
+      <h2>Manage your wallet</h2>
+    </div>
+  </div>
+
+
+  <div class="quick-actions">
+
+    <a href="withdraw.html" class="action-card">
+
+      <div class="action-icon">
+        💸
+      </div>
+
+      <div>
+        <h3>Withdraw</h3>
+        <p>Request a withdrawal</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+    </a>
+
+
+    <a href="history.html" class="action-card">
+
+      <div class="action-icon">
+        📊
+      </div>
+
+      <div>
+        <h3>Transaction History</h3>
+        <p>View your transactions</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+    </a>
+
+
+    <a href="profile.html" class="action-card">
+
+      <div class="action-icon">
+        👤
+      </div>
+
+      <div>
+        <h3>My Profile</h3>
+        <p>Manage your account</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- RECENT TRANSACTIONS -->
+<section class="dashboard-section">
+
+  <div class="section-title">
+
+    <div>
+      <span>ACTIVITY</span>
+      <h2>Recent Transactions</h2>
+    </div>
+
+    <a href="history.html" class="view-all">
+      View all →
+    </a>
+
+  </div>
+
+
+  <div class="transactions-card">
+
+    <div id="transactionsList">
+
+      <!-- Transaction inserted by JavaScript -->
+
+      <div class="empty-transactions">
+
+        <div class="empty-icon">
+          📋
+        </div>
+
+        <h3>No transactions yet</h3>
+
+        <p>
+          Your recent wallet activity will appear here.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ACCOUNT INFORMATION -->
+<section class="dashboard-section">
+
+  <div class="section-title">
+
+    <div>
+      <span>ACCOUNT</span>
+      <h2>Account Information</h2>
+    </div>
+
+    <a href="profile.html" class="view-all">
+      Edit profile →
+    </a>
+
+  </div>
+
+
+  <div class="account-info-card">
+
+    <div class="info-row">
+
+      <div class="info-label">
+        <span class="info-icon">👤</span>
+        <span>Full Name</span>
+      </div>
+
+      <strong id="profileName">
+        User
+      </strong>
+
+    </div>
+
+
+    <div class="info-row">
+
+      <div class="info-label">
+        <span class="info-icon">📧</span>
+        <span>Email</span>
+      </div>
+
+      <strong id="profileEmail">
+        Not provided
+      </strong>
+
+    </div>
+
+
+    <div class="info-row">
+
+      <div class="info-label">
+        <span class="info-icon">📱</span>
+        <span>Phone</span>
+      </div>
+
+      <strong id="profilePhone">
+        Not provided
+      </strong>
+
+    </div>
+
+
+    <div class="info-row">
+
+      <div class="info-label">
+        <span class="info-icon">🔐</span>
+        <span>Account Status</span>
+      </div>
+
+      <strong class="verified">
+        ✓ Active
+      </strong>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SECURITY NOTICE -->
+<section class="security-notice">
+
+  <div class="security-icon">
+    🔒
+  </div>
+
+  <div>
+    <h3>Keep your account secure</h3>
+
+    <p>
+      Never share your RedPay password, PIN, or verification
+      information with anyone.
+    </p>
+  </div>
+
+</section>
+
+  </main>  <!-- MOBILE BOTTOM NAVIGATION -->  <nav class="bottom-nav"><a href="dashboard.html" class="bottom-nav-item active">
+  <span>⌂</span>
+  <small>Home</small>
+</a>
+
+<a href="withdraw.html" class="bottom-nav-item">
+  <span>💸</span>
+  <small>Withdraw</small>
+</a>
+
+<a href="history.html" class="bottom-nav-item">
+  <span>📊</span>
+  <small>History</small>
+</a>
+
+<a href="profile.html" class="bottom-nav-item">
+  <span>👤</span>
+  <small>Profile</small>
+</a>
+
+  </nav>  <!-- JAVASCRIPT -->  <script src="app.js"></script>  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      /*
+       * REDPAY LOCAL ACCOUNT DATA
+       *
+       * These values can later be replaced with
+       * data from your real backend/API.
+       */
+
+      const user =
+        JSON.parse(localStorage.getItem("redpayUser")) || {};
+
+      const balance =
+        Number(localStorage.getItem("redpayBalance")) || 0;
+
+      const transactions =
+        JSON.parse(
+          localStorage.getItem("redpayTransactions") || "[]"
+        );
+
+
+      /* USER NAME */
+
+      const name =
+        user.name ||
+        user.fullName ||
+        "User";
+
+      const userName =
+        document.getElementById("userName");
+
+      const profileName =
+        document.getElementById("profileName");
+
+      if (userName) {
+        userName.textContent = name;
+      }
+
+      if (profileName) {
+        profileName.textContent = name;
+      }
+
+
+      /* EMAIL */
+
+      const profileEmail =
+        document.getElementById("profileEmail");
+
+      if (profileEmail && user.email) {
+        profileEmail.textContent = user.email;
+      }
+
+
+      /* PHONE */
+
+      const profilePhone =
+        document.getElementById("profilePhone");
+
+      if (profilePhone && user.phone) {
+        profilePhone.textContent = user.phone;
+      }
+
+
+      /* BALANCE */
+
+      const balanceElement =
+        document.getElementById("balance");
+
+      if (balanceElement) {
+        balanceElement.textContent =
+          formatMoney(balance);
+      }
+
+
+      /* ACCOUNT NUMBER */
+
+      const accountNumber =
+        document.getElementById("accountNumber");
+
+      if (accountNumber && user.accountNumber) {
+
+        accountNumber.textContent =
+          maskAccountNumber(user.accountNumber);
+
+      }
+
+
+      /* CALCULATE TRANSACTION TOTALS */
+
+      let deposits = 0;
+      let withdrawals = 0;
+
+
+      transactions.forEach(function (transaction) {
+
+        const amount =
+          Number(transaction.amount) || 0;
+
+        const type =
+          String(transaction.type || "").toLowerCase();
+
+
+        if (
+          type === "deposit" ||
+          type === "credit"
+        ) {
+
+          deposits += amount;
+
+        }
+
+
+        if (
+          type === "withdrawal" ||
+          type === "withdraw"
+        ) {
+
+          withdrawals += amount;
+
+        }
+
+      });
+
+
+      document.getElementById(
+        "totalDeposits"
+      ).textContent = formatMoney(deposits);
+
+
+      document.getElementById(
+        "totalWithdrawals"
+      ).textContent = formatMoney(withdrawals);
+
+
+      /* DISPLAY TRANSACTIONS */
+
+      displayTransactions(transactions);
+
+
+      /* LOGOUT */
+
+      const logoutBtn =
+        document.getElementById("logoutBtn");
+
+
+      if (logoutBtn) {
+
+        logoutBtn.addEventListener(
+          "click",
+          function () {
+
+            localStorage.removeItem("redpayLoggedIn");
+
+            window.location.href =
+              "login.html";
+
+          }
+        );
+
+      }
+
+    });
+
+
+    /* FORMAT MONEY */
+
+    function formatMoney(amount) {
+
+      return "₦" +
+        Number(amount || 0).toLocaleString(
+          "en-NG",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }
+        );
+
+    }
+
+
+    /* MASK ACCOUNT NUMBER */
+
+    function maskAccountNumber(number) {
+
+      const value =
+        String(number);
+
+      if (value.length <= 4) {
+        return value;
+      }
+
+      return "••••" +
+        value.slice(-4);
+
+    }
+
+
+    /* DISPLAY TRANSACTIONS */
+
+    function displayTransactions(transactions) {
+
+      const container =
+        document.getElementById(
+          "transactionsList"
+        );
+
+
+      if (!container) {
+        return;
+      }
+
+
+      if (
+        !Array.isArray(transactions) ||
+        transactions.length === 0
+      ) {
+
+        return;
+
+      }
+
+
+      container.innerHTML = "";
+
+
+      transactions
+        .slice()
+        .reverse()
+        .slice(0, 5)
+        .forEach(function (transaction) {
+
+          const amount =
+            Number(transaction.amount) || 0;
+
+          const type =
+            String(
+              transaction.type || "transaction"
+            ).toLowerCase();
+
+
+          const isWithdrawal =
+            type === "withdrawal" ||
+            type === "withdraw";
+
+
+          const row =
+            document.createElement("div");
+
+          row.className =
+            "transaction-row";
+
+
+          row.innerHTML = `
+
+            <div class="transaction-left">
+
+              <div class="transaction-icon ${
+                isWithdrawal
+                  ? "withdrawal"
+                  : "deposit"
+              }">
+
+                ${
+                  isWithdrawal
+                    ? "↓"
+                    : "↑"
+                }
+
+              </div>
+
+              <div>
+
+                <h3>
+                  ${
+                    transaction.description ||
+                    (
+                      isWithdrawal
+                        ? "Withdrawal"
+                        : "Deposit"
+                    )
+                  }
+                </h3>
+
+                <small>
+                  ${
+                    transaction.date ||
+                    "Recent transaction"
+                  }
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="transaction-amount ${
+              isWithdrawal
+                ? "negative"
+                : "positive"
+            }">
+
+              ${
+                isWithdrawal
+                  ? "-"
+                  : "+"
+              }
+
+              ${formatMoney(amount)}
+
+            </div>
+
+          `;
+
+
+          container.appendChild(row);
+
+        });
+
+    }
+
+  </script></body>
+      </html>
