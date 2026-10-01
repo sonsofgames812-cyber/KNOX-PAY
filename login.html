@@ -1,0 +1,587 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="theme-color" content="#e50914">
+  <meta name="description" content="Login to your RedPay account.">  <title>Login — RedPay</title>  <link rel="stylesheet" href="style.css">
+</head><body class="auth-page">  <!-- AUTH HEADER -->  <header class="auth-header"><a href="index.html" class="auth-brand">
+
+  <div class="brand-logo">
+    R
+  </div>
+
+  <div>
+    <h2>RedPay</h2>
+    <span>Digital Payments</span>
+  </div>
+
+</a>
+
+  </header>  <!-- MAIN -->  <main class="auth-container"><section class="auth-card">
+
+  <!-- ICON -->
+  <div class="auth-icon">
+    🔐
+  </div>
+
+
+  <!-- HEADING -->
+  <div class="auth-heading">
+
+    <span class="eyebrow">
+      WELCOME BACK
+    </span>
+
+    <h1>
+      Login to RedPay
+    </h1>
+
+    <p>
+      Access your wallet and manage your account.
+    </p>
+
+  </div>
+
+
+  <!-- MESSAGE -->
+  <div
+    id="loginMessage"
+    class="auth-message"
+    style="display:none;"
+  ></div>
+
+
+  <!-- LOGIN FORM -->
+  <form id="loginForm">
+
+    <!-- EMAIL -->
+    <div class="form-group">
+
+      <label for="email">
+        Email Address
+      </label>
+
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="you@example.com"
+        autocomplete="email"
+        required
+      >
+
+    </div>
+
+
+    <!-- PASSWORD -->
+    <div class="form-group">
+
+      <div class="password-label">
+
+        <label for="password">
+          Password
+        </label>
+
+        <a
+          href="#"
+          id="forgotPassword"
+        >
+          Forgot password?
+        </a>
+
+      </div>
+
+
+      <div class="password-input">
+
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          required
+        >
+
+        <button
+          type="button"
+          id="togglePassword"
+          class="password-toggle"
+          aria-label="Show password"
+        >
+          👁️
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- REMEMBER -->
+    <label class="remember-me">
+
+      <input
+        type="checkbox"
+        id="rememberMe"
+      >
+
+      <span>
+        Remember me
+      </span>
+
+    </label>
+
+
+    <!-- LOGIN BUTTON -->
+    <button
+      type="submit"
+      id="loginBtn"
+      class="primary-btn auth-submit"
+    >
+      Login →
+    </button>
+
+  </form>
+
+
+  <!-- REGISTER -->
+  <div class="auth-footer">
+
+    <p>
+      Don't have a RedPay account?
+    </p>
+
+    <a href="register.html">
+      Create an account
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- SECURITY -->
+<div class="auth-security">
+
+  <span>
+    🔒
+  </span>
+
+  <p>
+    Your account information is protected.
+  </p>
+
+</div>
+
+  </main>  <!-- FOOTER -->  <footer class="auth-page-footer"><a href="index.html">
+  ← Back to RedPay
+</a>
+
+<span>
+  © <span id="year"></span> RedPay
+</span>
+
+  </footer>  <!-- APP JS -->  <script src="app.js"></script>  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+
+        /* YEAR */
+
+        const year =
+          document.getElementById(
+            "year"
+          );
+
+
+        if (year) {
+
+          year.textContent =
+            new Date().getFullYear();
+
+        }
+
+
+        /* ELEMENTS */
+
+        const form =
+          document.getElementById(
+            "loginForm"
+          );
+
+
+        const email =
+          document.getElementById(
+            "email"
+          );
+
+
+        const password =
+          document.getElementById(
+            "password"
+          );
+
+
+        const loginBtn =
+          document.getElementById(
+            "loginBtn"
+          );
+
+
+        const rememberMe =
+          document.getElementById(
+            "rememberMe"
+          );
+
+
+        const togglePassword =
+          document.getElementById(
+            "togglePassword"
+          );
+
+
+        const forgotPassword =
+          document.getElementById(
+            "forgotPassword"
+          );
+
+
+        /* LOAD SAVED EMAIL */
+
+        const savedEmail =
+          localStorage.getItem(
+            "redpayRememberedEmail"
+          );
+
+
+        if (savedEmail) {
+
+          email.value =
+            savedEmail;
+
+          rememberMe.checked =
+            true;
+
+        }
+
+
+        /* SHOW / HIDE PASSWORD */
+
+        togglePassword.addEventListener(
+          "click",
+          function () {
+
+            if (
+              password.type ===
+              "password"
+            ) {
+
+              password.type =
+                "text";
+
+              togglePassword.textContent =
+                "🙈";
+
+              togglePassword.setAttribute(
+                "aria-label",
+                "Hide password"
+              );
+
+            } else {
+
+              password.type =
+                "password";
+
+              togglePassword.textContent =
+                "👁️";
+
+              togglePassword.setAttribute(
+                "aria-label",
+                "Show password"
+              );
+
+            }
+
+          }
+        );
+
+
+        /* LOGIN */
+
+        form.addEventListener(
+          "submit",
+          function (event) {
+
+            event.preventDefault();
+
+
+            const emailValue =
+              email.value
+                .trim()
+                .toLowerCase();
+
+
+            const passwordValue =
+              password.value;
+
+
+            /* VALIDATION */
+
+            if (
+              !isValidEmail(
+                emailValue
+              )
+            ) {
+
+              showMessage(
+                "Please enter a valid email address.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            if (
+              passwordValue.length < 1
+            ) {
+
+              showMessage(
+                "Please enter your password.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            /*
+             * GET REGISTERED USER
+             */
+
+            let storedUser = null;
+
+
+            try {
+
+              storedUser =
+                JSON.parse(
+                  localStorage.getItem(
+                    "redpayUser"
+                  )
+                );
+
+            } catch (error) {
+
+              storedUser = null;
+
+            }
+
+
+            /*
+             * DEMO AUTHENTICATION
+             *
+             * This checks the account created
+             * by register.html.
+             */
+
+            if (!storedUser) {
+
+              showMessage(
+                "No RedPay account was found. Please create an account first.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            const storedEmail =
+              String(
+                storedUser.email || ""
+              )
+                .trim()
+                .toLowerCase();
+
+
+            const storedPassword =
+              String(
+                storedUser.password || ""
+              );
+
+
+            if (
+              emailValue !== storedEmail
+            ) {
+
+              showMessage(
+                "Email or password is incorrect.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            if (
+              passwordValue !==
+              storedPassword
+            ) {
+
+              showMessage(
+                "Email or password is incorrect.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            /*
+             * BUTTON STATE
+             */
+
+            loginBtn.disabled =
+              true;
+
+
+            loginBtn.textContent =
+              "Signing in...";
+
+
+            /*
+             * REMEMBER EMAIL
+             */
+
+            if (
+              rememberMe.checked
+            ) {
+
+              localStorage.setItem(
+                "redpayRememberedEmail",
+                emailValue
+              );
+
+            } else {
+
+              localStorage.removeItem(
+                "redpayRememberedEmail"
+              );
+
+            }
+
+
+            /*
+             * LOGIN STATE
+             */
+
+            localStorage.setItem(
+              "redpayLoggedIn",
+              "true"
+            );
+
+
+            localStorage.setItem(
+              "redpayLastLogin",
+              new Date().toISOString()
+            );
+
+
+            /*
+             * SMALL DELAY FOR UI
+             */
+
+            setTimeout(
+              function () {
+
+                window.location.href =
+                  "dashboard.html";
+
+              },
+              500
+            );
+
+          }
+        );
+
+
+        /*
+         * FORGOT PASSWORD
+         */
+
+        forgotPassword.addEventListener(
+          "click",
+          function (event) {
+
+            event.preventDefault();
+
+
+            showMessage(
+              "Password recovery will be connected to the RedPay backend later.",
+              "info"
+            );
+
+          }
+        );
+
+
+      }
+    );
+
+
+    /*
+     * EMAIL VALIDATION
+     */
+
+    function isValidEmail(
+      email
+    ) {
+
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(email);
+
+    }
+
+
+    /*
+     * MESSAGE
+     */
+
+    function showMessage(
+      message,
+      type
+    ) {
+
+      const box =
+        document.getElementById(
+          "loginMessage"
+        );
+
+
+      if (!box) {
+        return;
+      }
+
+
+      box.style.display =
+        "block";
+
+
+      box.className =
+        "auth-message " +
+        type;
+
+
+      box.textContent =
+        message;
+
+    }
+
+  </script></body>
+</html>
