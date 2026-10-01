@@ -1,0 +1,1070 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e50914">
+  <meta name="description" content="RedPay transaction history">
+  <title>Transaction History — RedPay</title>  <link rel="stylesheet" href="style.css">
+</head><body>  <!-- TOP BAR -->  <header class="topbar"><div class="brand">
+  <div class="brand-logo">R</div>
+
+  <div>
+    <h2>RedPay</h2>
+    <span>Digital Payments</span>
+  </div>
+</div>
+
+<div class="nav-actions">
+
+  <a href="dashboard.html" class="profile-button">
+    ← Dashboard
+  </a>
+
+  <button id="logoutBtn" class="logout-button">
+    Logout
+  </button>
+
+</div>
+
+  </header>  <!-- MAIN -->  <main class="history-container"><!-- PAGE HEADER -->
+<section class="dashboard-header">
+
+  <div>
+    <span class="eyebrow">REDPAY WALLET</span>
+
+    <h1>
+      Transaction History 📊
+    </h1>
+
+    <p>
+      View and track your wallet activity.
+    </p>
+  </div>
+
+  <div class="status-badge">
+    <span class="status-dot"></span>
+    Account Active
+  </div>
+
+</section>
+
+
+<!-- SUMMARY -->
+<section class="history-summary">
+
+  <div class="history-stat">
+
+    <div class="stat-icon">
+      💰
+    </div>
+
+    <div>
+      <span>Total Deposits</span>
+
+      <h3 id="totalDeposits">
+        ₦0.00
+      </h3>
+    </div>
+
+  </div>
+
+
+  <div class="history-stat">
+
+    <div class="stat-icon">
+      💸
+    </div>
+
+    <div>
+      <span>Total Withdrawals</span>
+
+      <h3 id="totalWithdrawals">
+        ₦0.00
+      </h3>
+    </div>
+
+  </div>
+
+
+  <div class="history-stat">
+
+    <div class="stat-icon">
+      📋
+    </div>
+
+    <div>
+      <span>Total Transactions</span>
+
+      <h3 id="totalTransactions">
+        0
+      </h3>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FILTER -->
+<section class="history-controls">
+
+  <div class="search-box">
+
+    <span>🔎</span>
+
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Search transactions..."
+      autocomplete="off"
+    >
+
+  </div>
+
+
+  <select id="typeFilter">
+
+    <option value="all">
+      All Transactions
+    </option>
+
+    <option value="deposit">
+      Deposits
+    </option>
+
+    <option value="withdrawal">
+      Withdrawals
+    </option>
+
+  </select>
+
+
+  <select id="statusFilter">
+
+    <option value="all">
+      All Statuses
+    </option>
+
+    <option value="completed">
+      Completed
+    </option>
+
+    <option value="pending">
+      Pending
+    </option>
+
+    <option value="failed">
+      Failed
+    </option>
+
+  </select>
+
+</section>
+
+
+<!-- TRANSACTIONS -->
+<section class="history-card">
+
+  <div class="history-card-header">
+
+    <div>
+      <span>ACTIVITY</span>
+
+      <h2>
+        All Transactions
+      </h2>
+    </div>
+
+    <button
+      id="clearHistoryBtn"
+      class="clear-btn"
+      type="button"
+    >
+      Clear Demo History
+    </button>
+
+  </div>
+
+
+  <div id="transactionsContainer">
+
+    <!-- Transactions generated here -->
+
+  </div>
+
+
+  <!-- EMPTY STATE -->
+  <div
+    id="emptyState"
+    class="empty-transactions"
+    style="display:none;"
+  >
+
+    <div class="empty-icon">
+      📋
+    </div>
+
+    <h3>
+      No transactions found
+    </h3>
+
+    <p>
+      Your wallet activity will appear here.
+    </p>
+
+    <a
+      href="dashboard.html"
+      class="secondary-btn"
+    >
+      Back to Dashboard
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- SECURITY NOTICE -->
+<section class="security-notice">
+
+  <div class="security-icon">
+    🔒
+  </div>
+
+  <div>
+
+    <h3>
+      Keep your account secure
+    </h3>
+
+    <p>
+      Never share your RedPay password, PIN,
+      OTP, or verification information with anyone.
+    </p>
+
+  </div>
+
+</section>
+
+  </main>  <!-- MOBILE NAVIGATION -->  <nav class="bottom-nav"><a
+  href="dashboard.html"
+  class="bottom-nav-item"
+>
+  <span>⌂</span>
+  <small>Home</small>
+</a>
+
+
+<a
+  href="withdraw.html"
+  class="bottom-nav-item"
+>
+  <span>💸</span>
+  <small>Withdraw</small>
+</a>
+
+
+<a
+  href="history.html"
+  class="bottom-nav-item active"
+>
+  <span>📊</span>
+  <small>History</small>
+</a>
+
+
+<a
+  href="profile.html"
+  class="bottom-nav-item"
+>
+  <span>👤</span>
+  <small>Profile</small>
+</a>
+
+  </nav>  <!-- JAVASCRIPT -->  <script src="app.js"></script>  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        let transactions =
+          getTransactions();
+
+
+        const container =
+          document.getElementById(
+            "transactionsContainer"
+          );
+
+
+        const emptyState =
+          document.getElementById(
+            "emptyState"
+          );
+
+
+        const searchInput =
+          document.getElementById(
+            "searchInput"
+          );
+
+
+        const typeFilter =
+          document.getElementById(
+            "typeFilter"
+          );
+
+
+        const statusFilter =
+          document.getElementById(
+            "statusFilter"
+          );
+
+
+        /*
+         * INITIAL RENDER
+         */
+
+        updateSummary(
+          transactions
+        );
+
+
+        renderTransactions(
+          transactions
+        );
+
+
+        /*
+         * SEARCH
+         */
+
+        searchInput.addEventListener(
+          "input",
+          applyFilters
+        );
+
+
+        /*
+         * TYPE FILTER
+         */
+
+        typeFilter.addEventListener(
+          "change",
+          applyFilters
+        );
+
+
+        /*
+         * STATUS FILTER
+         */
+
+        statusFilter.addEventListener(
+          "change",
+          applyFilters
+        );
+
+
+        /*
+         * CLEAR DEMO HISTORY
+         */
+
+        const clearHistoryBtn =
+          document.getElementById(
+            "clearHistoryBtn"
+          );
+
+
+        clearHistoryBtn.addEventListener(
+          "click",
+          function () {
+
+            if (
+              transactions.length === 0
+            ) {
+
+              showNotice(
+                "There is no transaction history to clear.",
+                "error"
+              );
+
+              return;
+
+            }
+
+
+            const confirmed =
+              window.confirm(
+                "Clear all demo transaction history?"
+              );
+
+
+            if (!confirmed) {
+              return;
+            }
+
+
+            localStorage.removeItem(
+              "redpayTransactions"
+            );
+
+
+            transactions = [];
+
+
+            updateSummary(
+              transactions
+            );
+
+
+            renderTransactions(
+              transactions
+            );
+
+
+            showNotice(
+              "Demo transaction history cleared.",
+              "success"
+            );
+
+          }
+        );
+
+
+        /*
+         * LOGOUT
+         */
+
+        const logoutBtn =
+          document.getElementById(
+            "logoutBtn"
+          );
+
+
+        if (logoutBtn) {
+
+          logoutBtn.addEventListener(
+            "click",
+            function () {
+
+              localStorage.removeItem(
+                "redpayLoggedIn"
+              );
+
+              window.location.href =
+                "login.html";
+
+            }
+          );
+
+        }
+
+
+        /*
+         * APPLY FILTERS
+         */
+
+        function applyFilters() {
+
+          const search =
+            searchInput.value
+              .trim()
+              .toLowerCase();
+
+
+          const selectedType =
+            typeFilter.value;
+
+
+          const selectedStatus =
+            statusFilter.value;
+
+
+          const filtered =
+            transactions.filter(
+              function (transaction) {
+
+                const type =
+                  normalizeType(
+                    transaction.type
+                  );
+
+
+                const status =
+                  String(
+                    transaction.status ||
+                    "completed"
+                  ).toLowerCase();
+
+
+                const searchableText =
+                  [
+                    transaction.id,
+                    transaction.description,
+                    transaction.bank,
+                    transaction.accountName,
+                    transaction.accountNumber,
+                    transaction.date
+                  ]
+                    .filter(Boolean)
+                    .join(" ")
+                    .toLowerCase();
+
+
+                const matchesSearch =
+                  !search ||
+                  searchableText.includes(
+                    search
+                  );
+
+
+                const matchesType =
+                  selectedType === "all" ||
+                  type === selectedType;
+
+
+                const matchesStatus =
+                  selectedStatus === "all" ||
+                  status === selectedStatus;
+
+
+                return (
+                  matchesSearch &&
+                  matchesType &&
+                  matchesStatus
+                );
+
+              }
+            );
+
+
+          renderTransactions(
+            filtered
+          );
+
+        }
+
+
+        /*
+         * RENDER TRANSACTIONS
+         */
+
+        function renderTransactions(
+          list
+        ) {
+
+          container.innerHTML = "";
+
+
+          if (
+            !Array.isArray(list) ||
+            list.length === 0
+          ) {
+
+            emptyState.style.display =
+              "block";
+
+            return;
+
+          }
+
+
+          emptyState.style.display =
+            "none";
+
+
+          list
+            .slice()
+            .reverse()
+            .forEach(
+              function (transaction) {
+
+                const row =
+                  createTransactionRow(
+                    transaction
+                  );
+
+
+                container.appendChild(
+                  row
+                );
+
+              }
+            );
+
+        }
+
+
+        /*
+         * CREATE TRANSACTION ROW
+         */
+
+        function createTransactionRow(
+          transaction
+        ) {
+
+          const row =
+            document.createElement(
+              "div"
+            );
+
+
+          const type =
+            normalizeType(
+              transaction.type
+            );
+
+
+          const amount =
+            Number(
+              transaction.amount
+            ) || 0;
+
+
+          const status =
+            String(
+              transaction.status ||
+              "completed"
+            ).toLowerCase();
+
+
+          const isWithdrawal =
+            type === "withdrawal";
+
+
+          row.className =
+            "transaction-row history-row";
+
+
+          const sign =
+            isWithdrawal
+              ? "-"
+              : "+";
+
+
+          const amountClass =
+            isWithdrawal
+              ? "negative"
+              : "positive";
+
+
+          const icon =
+            isWithdrawal
+              ? "↓"
+              : "↑";
+
+
+          const title =
+            transaction.description ||
+            (
+              isWithdrawal
+                ? "Withdrawal"
+                : "Deposit"
+            );
+
+
+          const date =
+            transaction.date ||
+            "Unknown date";
+
+
+          const transactionId =
+            transaction.id ||
+            "N/A";
+
+
+          row.innerHTML = `
+
+            <div class="transaction-left">
+
+              <div class="transaction-icon ${
+                isWithdrawal
+                  ? "withdrawal"
+                  : "deposit"
+              }">
+
+                ${icon}
+
+              </div>
+
+
+              <div class="transaction-details">
+
+                <h3>
+                  ${escapeHTML(title)}
+                </h3>
+
+                <small>
+                  ${escapeHTML(date)}
+                </small>
+
+                <small class="transaction-id">
+                  ID: ${escapeHTML(
+                    transactionId
+                  )}
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="history-middle">
+
+              ${
+                transaction.bank
+                  ? `
+                    <span>
+                      ${escapeHTML(
+                        transaction.bank
+                      )}
+                    </span>
+                  `
+                  : ""
+              }
+
+              ${
+                transaction.accountNumber
+                  ? `
+                    <small>
+                      Account:
+                      ${maskAccount(
+                        transaction.accountNumber
+                      )}
+                    </small>
+                  `
+                  : ""
+              }
+
+            </div>
+
+
+            <div class="transaction-right">
+
+              <strong
+                class="transaction-amount ${amountClass}"
+              >
+                ${sign}${formatMoney(amount)}
+              </strong>
+
+
+              <span
+                class="transaction-status status-${status}"
+              >
+                ${capitalize(status)}
+              </span>
+
+            </div>
+
+          `;
+
+
+          return row;
+
+        }
+
+      }
+    );
+
+
+    /*
+     * GET TRANSACTIONS
+     */
+
+    function getTransactions() {
+
+      try {
+
+        const data =
+          JSON.parse(
+            localStorage.getItem(
+              "redpayTransactions"
+            ) || "[]"
+          );
+
+
+        return Array.isArray(data)
+          ? data
+          : [];
+
+      } catch (error) {
+
+        return [];
+
+      }
+
+    }
+
+
+    /*
+     * NORMALIZE TRANSACTION TYPE
+     */
+
+    function normalizeType(
+      type
+    ) {
+
+      const value =
+        String(
+          type || ""
+        ).toLowerCase();
+
+
+      if (
+        value === "withdraw" ||
+        value === "withdrawal"
+      ) {
+
+        return "withdrawal";
+
+      }
+
+
+      if (
+        value === "deposit" ||
+        value === "credit"
+      ) {
+
+        return "deposit";
+
+      }
+
+
+      return value;
+
+    }
+
+
+    /*
+     * UPDATE SUMMARY
+     */
+
+    function updateSummary(
+      transactions
+    ) {
+
+      let deposits = 0;
+      let withdrawals = 0;
+
+
+      transactions.forEach(
+        function (transaction) {
+
+          const amount =
+            Number(
+              transaction.amount
+            ) || 0;
+
+
+          const type =
+            normalizeType(
+              transaction.type
+            );
+
+
+          if (type === "deposit") {
+
+            deposits += amount;
+
+          }
+
+
+          if (type === "withdrawal") {
+
+            withdrawals += amount;
+
+          }
+
+        }
+      );
+
+
+      document.getElementById(
+        "totalDeposits"
+      ).textContent =
+        formatMoney(deposits);
+
+
+      document.getElementById(
+        "totalWithdrawals"
+      ).textContent =
+        formatMoney(withdrawals);
+
+
+      document.getElementById(
+        "totalTransactions"
+      ).textContent =
+        transactions.length;
+
+    }
+
+
+    /*
+     * MONEY FORMAT
+     */
+
+    function formatMoney(
+      amount
+    ) {
+
+      return "₦" +
+        Number(
+          amount || 0
+        ).toLocaleString(
+          "en-NG",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }
+        );
+
+    }
+
+
+    /*
+     * MASK ACCOUNT NUMBER
+     */
+
+    function maskAccount(
+      number
+    ) {
+
+      const value =
+        String(number || "");
+
+
+      if (
+        value.length <= 4
+      ) {
+
+        return value;
+
+      }
+
+
+      return "••••" +
+        value.slice(-4);
+
+    }
+
+
+    /*
+     * CAPITALIZE
+     */
+
+    function capitalize(
+      value
+    ) {
+
+      if (!value) {
+        return "";
+      }
+
+
+      return value.charAt(0).toUpperCase() +
+        value.slice(1);
+
+    }
+
+
+    /*
+     * BASIC HTML ESCAPING
+     */
+
+    function escapeHTML(
+      value
+    ) {
+
+      return String(
+        value || ""
+      )
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+        .replace(
+          /</g,
+          "&lt;"
+        )
+        .replace(
+          />/g,
+          "&gt;"
+        )
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+        .replace(
+          /'/g,
+          "&#039;"
+        );
+
+    }
+
+
+    /*
+     * NOTICE
+     */
+
+    function showNotice(
+      message,
+      type
+    ) {
+
+      const old =
+        document.getElementById(
+          "historyNotice"
+        );
+
+
+      if (old) {
+        old.remove();
+      }
+
+
+      const notice =
+        document.createElement(
+          "div"
+        );
+
+
+      notice.id =
+        "historyNotice";
+
+
+      notice.className =
+        "withdraw-message " +
+        type;
+
+
+      notice.textContent =
+        message;
+
+
+      const main =
+        document.querySelector(
+          "main"
+        );
+
+
+      main.insertBefore(
+        notice,
+        main.firstChild
+      );
+
+
+      setTimeout(
+        function () {
+
+          if (notice) {
+            notice.remove();
+          }
+
+        },
+        4000
+      );
+
+    }
+
+  </script></body>
+  </html>
