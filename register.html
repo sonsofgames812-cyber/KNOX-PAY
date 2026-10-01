@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#e50914">
+  <meta name="description" content="Create your RedPay account">
+
+  <title>Create Account — RedPay</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="auth-page">
+
+  <!-- HEADER -->
+  <header class="auth-header">
+    <a href="index.html" class="auth-brand">
+      <span class="brand-logo">R</span>
+      <span>
+        <strong>RedPay</strong>
+        <small>Digital Payments</small>
+      </span>
+    </a>
+
+    <a href="login.html" class="auth-header-link">
+      Already have an account?
+      <strong>Login</strong>
+    </a>
+  </header>
+
+
+  <!-- MAIN -->
+  <main class="auth-container">
+
+    <section class="auth-card">
+
+      <div class="auth-icon">
+        👤
+      </div>
+
+      <h1>Create Your Account</h1>
+
+      <p class="auth-subtitle">
+        Join RedPay and manage your digital wallet with ease.
+      </p>
+
+
+      <!-- MESSAGE -->
+      <div id="registerMessage" class="auth-message" hidden></div>
+
+
+      <!-- REGISTER FORM -->
+      <form id="registerForm" novalidate>
+
+        <!-- FULL NAME -->
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+
+          <div class="input-wrapper">
+            <span class="input-icon">👤</span>
+
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="Enter your full name"
+              autocomplete="name"
+              maxlength="60"
+              required
+            >
+          </div>
+        </div>
+
+
+        <!-- EMAIL -->
+        <div class="form-group">
+          <label for="email">Email Address</label>
+
+          <div class="input-wrapper">
+            <span class="input-icon">✉️</span>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              maxlength="100"
+              required
+            >
+          </div>
+        </div>
+
+
+        <!-- PHONE -->
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+
+          <div class="input-wrapper">
+            <span class="input-icon">📱</span>
+
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="08012345678"
+              autocomplete="tel"
+              maxlength="15"
+              required
+            >
+          </div>
+        </div>
+
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+          <label for="password">Password</label>
+
+          <div class="input-wrapper password-wrapper">
+            <span class="input-icon">🔒</span>
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create a password"
+              autocomplete="new-password"
+              minlength="6"
+              maxlength="100"
+              required
+            >
+
+            <button
+              type="button"
+              class="password-toggle"
+              id="togglePassword"
+              aria-label="Show password"
+            >
+              👁️
+            </button>
+          </div>
+
+          <small class="field-hint">
+            Use at least 6 characters.
+          </small>
+        </div>
+
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+
+          <div class="input-wrapper password-wrapper">
+            <span class="input-icon">🔐</span>
+
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Confirm your password"
+              autocomplete="new-password"
+              minlength="6"
+              maxlength="100"
+              required
+            >
+
+            <button
+              type="button"
+              class="password-toggle"
+              id="toggleConfirmPassword"
+              aria-label="Show password"
+            >
+              👁️
+            </button>
+          </div>
+        </div>
+
+
+        <!-- TERMS -->
+        <label class="checkbox-row terms-row">
+          <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            required
+          >
+
+          <span>
+            I agree to the RedPay demo
+            <a href="#" id="termsLink">Terms & Conditions</a>
+            and acknowledge that this is a demonstration wallet.
+          </span>
+        </label>
+
+
+        <!-- SUBMIT -->
+        <button
+          type="submit"
+          class="auth-submit"
+          id="registerBtn"
+        >
+          <span id="registerBtnText">Create Account</span>
+          <span id="registerLoader" hidden>Creating...</span>
+        </button>
+
+      </form>
+
+
+      <!-- LOGIN LINK -->
+      <div class="auth-switch">
+        Already have a RedPay account?
+        <a href="login.html">Login here</a>
+      </div>
+
+    </section>
+
+
+    <!-- SECURITY NOTE -->
+    <div class="auth-security">
+      <span>🔒</span>
+
+      <div>
+        <strong>Demo Security Notice</strong>
+
+        <p>
+          This RedPay version is a frontend demonstration.
+          Do not use real financial information or passwords.
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="auth-footer">
+    <p>
+      © <span id="currentYear"></span> RedPay.
+      Demo project.
+    </p>
+  </footer>
+
+
+  <script>
+    "use strict";
+
+    const registerForm = document.getElementById("registerForm");
+    const registerMessage = document.getElementById("registerMessage");
+
+    const fullNameInput = document.getElementById("fullName");
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirmPassword");
+    const termsInput = document.getElementById("terms");
+
+    const registerBtn = document.getElementById("registerBtn");
+    const registerBtnText = document.getElementById("registerBtnText");
+    const registerLoader = document.getElementById("registerLoader");
+
+    const togglePassword = document.getElementById("togglePassword");
+    const toggleConfirmPassword =
+      document.getElementById("toggleConfirmPassword");
+
+    const termsLink = document.getElementById("termsLink");
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+
+    /* =========================
+       MESSAGE
+    ========================= */
+
+    function showMessage(message, type) {
+      registerMessage.textContent = message;
+
+      registerMessage.className =
+        "auth-message " + type;
+
+      registerMessage.hidden = false;
+    }
+
+
+    function hideMessage() {
+      registerMessage.hidden = true;
+    }
+
+
+    /* =========================
+       VALIDATION
+    ========================= */
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+
+    function cleanPhone(phone) {
+      return phone.replace(/[\s\-()]/g, "");
+    }
+
+
+    function isValidPhone(phone) {
+      const cleaned = cleanPhone(phone);
+
+      return /^(\+234|0)[0-9]{10}$/.test(cleaned);
+    }
+
+
+    /* =========================
+       ACCOUNT NUMBER
+    ========================= */
+
+    function generateAccountNumber() {
+
+      let accountNumber = "";
+
+      for (let i = 0; i < 10; i++) {
+        accountNumber += Math.floor(Math.random() * 10);
+      }
+
+      return accountNumber;
+    }
+
+
+    function createUniqueAccountNumber() {
+
+      let accountNumber;
+      let existingNumber;
+
+      do {
+        accountNumber = generateAccountNumber();
+
+        existingNumber =
+          localStorage.getItem("redpayAccountNumber");
+
+      } while (accountNumber === existingNumber);
+
+      return accountNumber;
+    }
+
+
+    /* =========================
+       PASSWORD TOGGLE
+    ========================= */
+
+    function setupPasswordToggle(button, input) {
+
+      button.addEventListener("click", function () {
+
+        if (input.type === "password") {
+
+          input.type = "text";
+
+          button.textContent = "🙈";
+
+          button.setAttribute(
+            "aria-label",
+            "Hide password"
+          );
+
+        } else {
+
+          input.type = "password";
+
+          button.textContent = "👁️";
+
+          button.setAttribute(
+            "aria-label",
+            "Show password"
+          );
+        }
+      });
+    }
+
+
+    setupPasswordToggle(
+      togglePassword,
+      passwordInput
+    );
+
+    setupPasswordToggle(
+      toggleConfirmPassword,
+      confirmPasswordInput
+    );
+
+
+    /* =========================
+       TERMS
+    ========================= */
+
+    termsLink.addEventListener("click", function (event) {
+
+      event.preventDefault();
+
+      alert(
+        "RedPay Demo Terms\\n\\n" +
+        "This website is a frontend demonstration " +
+        "and does not provide real banking or payment services.\\n\\n" +
+        "Do not enter real financial information."
+      );
+    });
+
+
+    /* =========================
+       REGISTER
+    ========================= */
+
+    registerForm.addEventListener("submit", function (event) {
+
+      event.preventDefault();
+
+      hideMessage();
+
+      const fullName =
+        fullNameInput.value.trim();
+
+      const email =
+        emailInput.value.trim().toLowerCase();
+
+      const phone =
+        cleanPhone(phoneInput.value.trim());
+
+      const password =
+        passwordInput.value;
+
+      const confirmPassword =
+        confirmPasswordInput.value;
+
+
+      /* REQUIRED FIELDS */
+
+      if (
+        !fullName ||
+        !email ||
+        !phone ||
+        !password ||
+        !confirmPassword
+      ) {
+
+        showMessage(
+          "Please complete all required fields.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      /* NAME */
+
+      if (fullName.length < 2) {
+
+        showMessage(
+          "Please enter your full name.",
+          "error"
+        );
+
+        fullNameInput.focus();
+
+        return;
+      }
+
+
+      /* EMAIL */
+
+      if (!isValidEmail(email)) {
+
+        showMessage(
+          "Please enter a valid email address.",
+          "error"
+        );
+
+        emailInput.focus();
+
+        return;
+      }
+
+
+      /* PHONE */
+
+      if (!isValidPhone(phone)) {
+
+        showMessage(
+          "Please enter a valid Nigerian phone number.",
+          "error"
+        );
+
+        phoneInput.focus();
+
+        return;
+      }
+
+
+      /* PASSWORD */
+
+      if (password.length < 6) {
+
+        showMessage(
+          "Password must contain at least 6 characters.",
+          "error"
+        );
+
+        passwordInput.focus();
+
+        return;
+      }
+
+
+      /* CONFIRM PASSWORD */
+
+      if (password !== confirmPassword) {
+
+        showMessage(
+          "Passwords do not match.",
+          "error"
+        );
+
+        confirmPasswordInput.focus();
+
+        return;
+      }
+
+
+      /* TERMS */
+
+      if (!termsInput.checked) {
+
+        showMessage(
+          "Please accept the terms before creating your account.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      /* CHECK EXISTING ACCOUNT */
+
+      const existingUser =
+        JSON.parse(
+          localStorage.getItem("redpayUser") || "null"
+        );
+
+
+      if (
+        existingUser &&
+        existingUser.email &&
+        existingUser.email.toLowerCase() === email
+      ) {
+
+        showMessage(
+          "An account with this email already exists.",
+          "error"
+        );
+
+        emailInput.focus();
+
+        return;
+      }
+
+
+      /* LOADING */
+
+      registerBtn.disabled = true;
+
+      registerBtnText.hidden = true;
+      registerLoader.hidden = false;
+
+
+      /*
+       * Small delay to make the demo
+       * feel like a real registration process.
+       */
+
+      setTimeout(function () {
+
+        const accountNumber =
+          createUniqueAccountNumber();
+
+
+        /* USER OBJECT */
+
+        const user = {
+
+          fullName: fullName,
+
+          name: fullName,
+
+          email: email,
+
+          phone: phone,
+
+          /*
+           * DEMO ONLY.
+           * Never store real passwords like this
+           * in a production application.
+           */
+          password: password,
+
+          accountNumber: accountNumber,
+
+          createdAt:
+            new Date().toISOString()
+        };
+
+
+        /* SAVE USER */
+
+        localStorage.setItem(
+          "redpayUser",
+          JSON.stringify(user)
+        );
+
+
+        /* ACCOUNT INFORMATION */
+
+        localStorage.setItem(
+          "redpayAccountNumber",
+          accountNumber
+        );
+
+        localStorage.setItem(
+          "redpayAccountCreated",
+          user.createdAt
+        );
+
+
+        /* INITIAL BALANCE */
+
+        if (
+          localStorage.getItem("redpayBalance") === null
+        ) {
+
+          localStorage.setItem(
+            "redpayBalance",
+            "0"
+          );
+        }
+
+
+        /* INITIAL TRANSACTIONS */
+
+        if (
+          localStorage.getItem("redpayTransactions") === null
+        ) {
+
+          localStorage.setItem(
+            "redpayTransactions",
+            JSON.stringify([])
+          );
+        }
+
+
+        /* LOGIN STATE */
+
+        localStorage.removeItem(
+          "redpayLoggedIn"
+        );
+
+
+        /* REMEMBER EMAIL */
+
+        localStorage.setItem(
+          "redpayRememberedEmail",
+          email
+        );
+
+
+        /* SUCCESS */
+
+        showMessage(
+          "Account created successfully! Redirecting to login...",
+          "success"
+        );
+
+
+        setTimeout(function () {
+
+          window.location.href = "login.html";
+
+        }, 1200);
+
+
+      }, 700);
+
+    });
+  </script>
+
+</body>
+  </html>
